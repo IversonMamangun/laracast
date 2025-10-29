@@ -1,0 +1,12 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Set the base folder (adjust if your project folder is named differently)
+RewriteBase /laracast/
+
+# If the requested file or directory does NOT exist...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ...then route everything to index.php
+RewriteRule ^ index.php [L]
