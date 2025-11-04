@@ -1,6 +1,7 @@
 <?php
 
-class Database{
+class Database
+{
     public $connection;
     public $statement;
     
@@ -35,5 +36,10 @@ class Database{
         return $result;
 
     }
+    public function findAll()
+{
+    return $this->statement->fetchAll();
+}
+
 
     }
