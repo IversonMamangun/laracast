@@ -2,8 +2,8 @@
 return [
     '/laracast/' => 'controllers/index.php',
     '/laracast/about' => 'controllers/about.php',
-    '/laracast/notes' => 'controllers/notes.php',
-    '/laracast/create' => 'controllers/note-create.php',
-    '/laracast/note' => 'controllers/note.php',
+    '/laracast/notes' => 'controllers/notes/index.php',
+    '/laracast/create' => 'controllers/notes/create.php',
+    '/laracast/note' => 'controllers/notes/show.php',
     '/laracast/contact' => 'controllers/contact.php'
 ];

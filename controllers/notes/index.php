@@ -7,5 +7,5 @@ $heading = 'My Notes';
 
 $notes = $db->query('select * from notes where users_id = 3')->findAll();
 
-require_once './views/notes.view.php';
+require_once 'views/notes/index.view.php';
 
