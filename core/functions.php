@@ -1,6 +1,6 @@
 <?php 
-
-
+use function Core\abort;
+use Core\Response;
 function dd($value){
     echo "<pre>";
     var_dump($value);
@@ -21,4 +21,10 @@ function authorize($condition, $status = Response::FORBIDDEN){
 function base_path($path)
 {
     return BASE_PATH . $path;
+}
+
+function view($path, $attributes = []) {
+    extract($attributes);
+    require base_path('views/' . $path);
+
 }

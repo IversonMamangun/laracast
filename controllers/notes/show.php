@@ -1,9 +1,13 @@
 <?php
+use Core\Database;
+use Core\Response;
+use function Core\abort;
 
-$config = require 'config.php'; 
+
+
+$config = require '../config.php'; 
 $db = new Database($config['database']); 
 
-$heading = 'Note';
 $currentUserId = 3;
 
 if (!isset($_GET['id'])) {
@@ -16,4 +20,7 @@ $note = $db->query('select * from notes where id = :id', [
 
 authorize($note['users_id'] === $currentUserId);
 
-require_once 'views/notes/show.view.php';
+view('notes/show.view.php', [
+    'heading' => 'Note',
+    'note' => $note
+]);
