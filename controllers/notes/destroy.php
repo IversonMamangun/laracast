@@ -1,8 +1,10 @@
 <?php
 use Core\Database;
+use Core\App;
 
-$config = require base_path('config.php'); 
-$db = new Database($config['database']); 
+
+$db = App::container()->resolve('Core\Database');
+
 
 $currentUserId = 3;
 
@@ -16,5 +18,5 @@ $currentUserId = 3;
         'id' => $_POST['id']
     ]);
 
-    header('Location: /notes');
+    header('Location: /laracast/notes');
     exit;
