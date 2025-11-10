@@ -1,8 +1,8 @@
 <?php
 use Core\App;
+use Core\Database;
 
-
-$db = App::getContainer()->resolve('Core\Database');
+$db = App::resolve(Database::class);
 
 
 $currentUserId = 4;
