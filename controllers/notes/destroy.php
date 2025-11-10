@@ -1,12 +1,11 @@
 <?php
-use Core\Database;
 use Core\App;
 
 
-$db = App::container()->resolve('Core\Database');
+$db = App::getContainer()->resolve('Core\Database');
 
 
-$currentUserId = 3;
+$currentUserId = 4;
 
     $note = $db->query('select * from notes where id = :id', [
         'id' => $_POST['id']

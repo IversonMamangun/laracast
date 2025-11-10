@@ -39,10 +39,11 @@ class Database
         return $result;
 
     }
-    public function findAll()
-{
-    return $this->statement->fetchAll();
-}
-
-
+    public function get()
+    {
+        return $this->statement->fetchAll();
     }
+
+
+
+}
