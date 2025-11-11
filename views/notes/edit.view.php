@@ -6,6 +6,7 @@
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <form method="POST" action="/laracast/note" >
             <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="id" value="<?= $note['id']?>">
           <div class="space-y-12">
 
               <div class="col-span-full">
