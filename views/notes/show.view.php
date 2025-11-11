@@ -9,15 +9,16 @@
         </p>
         <p><?= htmlspecialchars($note['body']) ?></p>
         <footer class="mt-6">
-            <a href="/laracast/note? <?= $note['id'] ?> ?>" class="text-gray-500 border border-current px-4 py-2 rounded"></a>
-        </footer>
+            <a href="/laracast/note/edit?id=<?= $note['id'] ?>" class="rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-gray-400">Edit</a>
 
-        <!-- <form class="mt-6" method="POST">
+          </footer>
+
+        <form class="mt-6" method="POST">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="id" value="?= $note['id'] ?>">
-            <button class="text-red-500 text-sm">Delete</button>
+            <input type="hidden" name="id" value="<?= $note['id'] ?>">
+            <button class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-400">Delete</button>
         </form>
- -->
+
 
 </div>
   </main>

@@ -6,14 +6,14 @@ use Core\Database;
 $db = App::resolve(Database::class);
 
 
-$currentUserId = 4;
+$currentUserId = 1;
 // find the corresponding note
     $note = $db->query('select * from notes where id = :id', params: [
         'id' => $_POST['id']
     ])->findOrFail();
 
 // authorize that the current user can edit the note    
-    authorize($note['users_id'] === $currentUserId);
+    authorize($note['user_id'] === $currentUserId);
 
 // Validate the form
 

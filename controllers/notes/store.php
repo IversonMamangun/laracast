@@ -23,10 +23,10 @@ return view('notes/create.view.php', [
 
 if (empty($errors)) {
     $db->query(
-        'INSERT INTO notes(body, users_id) VALUES (:body, :users_id)',
+        'INSERT INTO notes(body, user_id) VALUES (:body, :user_id)',
         [
             'body' => $_POST['body'],
-            'users_id' => 4    
+            'user_id' => 1    
     ]); 
 
     header('location: /laracast/notes');
