@@ -8,13 +8,16 @@
             <a href="notes" class="text-blue-500 underline">Go back...</a>
         </p>
         <p><?= htmlspecialchars($note['body']) ?></p>
+        <footer class="mt-6">
+            <a href="/laracast/note? <?= $note['id'] ?> ?>" class="text-gray-500 border border-current px-4 py-2 rounded"></a>
+        </footer>
 
-        <form class="mt-6" method="POST">
+        <!-- <form class="mt-6" method="POST">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="id" value="<?= $note['id'] ?>">
+            <input type="hidden" name="id" value="?= $note['id'] ?>">
             <button class="text-red-500 text-sm">Delete</button>
         </form>
-
+ -->
 
 </div>
   </main>
