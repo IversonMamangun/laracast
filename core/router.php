@@ -1,7 +1,7 @@
 <?php
 namespace Core;
+use Core\Middleware\Middleware;
 
-use Core\Middleware\Guest;
 class Router{
     protected $routes = [];
 
@@ -36,7 +36,6 @@ class Router{
 
 
     }
-
     public function patch($uri, $controller)
     {
         return $this->add('PATCH', $uri, $controller);
@@ -47,44 +46,29 @@ class Router{
     {
         return $this->add('PUT', $uri, $controller);
 
-
-        }
+    }
        public function only($key){
 
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
 
         return $this;
     }
-public function route($uri, $method)
-{
-    foreach ($this->routes as $route) {
-        if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
-            
-            // apply middleware before loading controller
-            if ($route['middleware'] === 'guest') {
-                (new Guest())->handle();
-            }
-
-            if ($route['middleware'] === 'auth') {
-                
+        public function route($uri, $method)
+        {
+            foreach ($this->routes as $route) {
+                if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) { 
+                    Middleware::resolve($route['middleware']);  
+                                    
+                    return require_once base_path($route['controller']);
                 }
             }
-
-            return require_once base_path($route['controller']);
+            $this->abort(); 
         }
-    }
-
-    $this->abort(); // call method properly
-}
-
-        
+  
         protected function abort($code = 404)
         {
             http_response_code($code);
-        
-            require base_path( "views/{$code}.php");
-            
+            require base_path( "views/{$code}.php");  
             die();
         }
-
 }

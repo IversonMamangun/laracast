@@ -3,6 +3,8 @@ use Core\Database;
 use Core\App;
 use Core\Validator;
 
+$db = App::resolve(DATABASE::class);
+
 $email = $_POST["email"];
 $password = $_POST["password"];
 
@@ -23,7 +25,6 @@ return view('registration/create.view.php', [
     'errors' => $errors
 ]);
 }
-$db = App::resolve(DATABASE::class);
 // Check if the account already exist
 $user = $db->query('select * from users where email = :email', [
     'email' => $email
@@ -32,7 +33,7 @@ $user = $db->query('select * from users where email = :email', [
 if ($user){
     // then someone with that email already exists and has an account
     // if yes, redirect to a login page.
-    header('/laracast/');
+    header('location: /laracast/');
 }else{ 
 // if Not, save one to the database, and then log user in, and redirect
 $db->query(
@@ -44,9 +45,9 @@ $db->query(
 );
 
     // Mark that the user has logged in
-    $_SESSION['user'] = [
+    login([
         'email' => $email
-    ];
+    ]);
 
     header('location: /laracast/');
     exit();
